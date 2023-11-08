@@ -1,5 +1,6 @@
 package com.example;
 
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ServerInfo;
@@ -10,7 +11,7 @@ import java.net.InetAddress;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class SnowballFixModClient implements ModInitializer {
+public class ExampleModClient implements ClientModInitializer {
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
@@ -24,8 +25,8 @@ public class SnowballFixModClient implements ModInitializer {
 			try {
 				add(InetAddress.getByName(new URL(ip).getHost()));
 			} catch (Exception e) {
-				SnowballFixModClient.LOGGER.error("Could not access: {}", ip);
-				SnowballFixModClient.LOGGER.error(e);
+				ExampleModClient.LOGGER.error("Could not access: {}", ip);
+				ExampleModClient.LOGGER.error(e);
 			}
 		}
 	}};
@@ -41,7 +42,7 @@ public class SnowballFixModClient implements ModInitializer {
 	}
 
 	@Override
-	public void onInitialize() {
+	public void onInitializeClient() {
 		LOGGER.info("SnowballFix Loaded");
 	}
 }

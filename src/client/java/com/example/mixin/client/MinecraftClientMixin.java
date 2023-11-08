@@ -1,7 +1,7 @@
 package com.example.mixin.client;
 
 import com.example.ClientPlayNetworkHandlerData;
-import com.example.SnowballFixModClient;
+import com.example.ExampleModClient;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MinecraftClientMixin {
     @Inject(at = @At("HEAD"), method = "setScreen")
     private void setScreen(Screen screen, CallbackInfo info) {
-        if (!SnowballFixModClient.connectedToServer()) return;
+        if (!ExampleModClient.connectedToServer()) return;
 
         /*
             So apparently what happens for shulker quickopen is

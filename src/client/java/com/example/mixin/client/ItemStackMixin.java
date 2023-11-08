@@ -1,6 +1,6 @@
 package com.example.mixin.client;
 
-import com.example.SnowballFixModClient;
+import com.example.ExampleModClient;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class ItemStackMixin {
     @Inject(at = @At("HEAD"), method = "decrement", cancellable = true)
     private void decrement(int amount, CallbackInfo callbackInfo) {
-        if (!SnowballFixModClient.connectedToServer()) return;
+        if (!ExampleModClient.connectedToServer()) return;
 
         StackWalker.StackFrame frame = StackWalker.getInstance().walk(stream->stream.limit(3).collect(Collectors.toList())).get(2);
         if (frame.getMethodName().equals("use") && EnchantmentHelper.getLevel(Enchantments.INFINITY, ((ItemStack) (Object) this)) > 0) {

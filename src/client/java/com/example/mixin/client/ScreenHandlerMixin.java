@@ -1,6 +1,6 @@
 package com.example.mixin.client;
 
-import com.example.SnowballFixModClient;
+import com.example.ExampleModClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
@@ -21,7 +21,7 @@ import java.util.Optional;
 public class ScreenHandlerMixin {
     @Redirect(method="internalOnSlotClick", at=@At(value="INVOKE", target="Lnet/minecraft/screen/slot/Slot;tryTakeStackRange(IILnet/minecraft/entity/player/PlayerEntity;)Ljava/util/Optional;", ordinal=0))
     private Optional<ItemStack> tryTakeStackRange(Slot slot, int min, int max, PlayerEntity player, int slotIndex, int button, SlotActionType actionType, PlayerEntity player2) {
-        if (!SnowballFixModClient.connectedToServer()) return slot.tryTakeStackRange(min, max, player);
+        if (!ExampleModClient.connectedToServer()) return slot.tryTakeStackRange(min, max, player);
         if (button == 0 || slot.getStack().getCount() > 1) return slot.tryTakeStackRange(min, max, player);
         return Optional.empty();
     }
