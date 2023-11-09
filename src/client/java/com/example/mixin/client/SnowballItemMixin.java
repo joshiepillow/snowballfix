@@ -3,6 +3,7 @@ package com.example.mixin.client;
 import net.minecraft.item.SnowballItem;
 import org.spongepowered.asm.mixin.Mixin;
 
+// delete later
 @Mixin(SnowballItem.class)
 public class SnowballItemMixin {
 	/*

@@ -1,7 +1,6 @@
 package com.example.mixin.client;
 
 import com.example.ClientPlayNetworkHandlerData;
-import com.example.MouseAccessor;
 import com.example.ExampleModClient;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;

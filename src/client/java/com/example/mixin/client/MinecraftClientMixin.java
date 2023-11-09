@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MinecraftClient.class)
-/*
-    For ClientPlayNetworkHandlerMixin
- */
 public class MinecraftClientMixin {
+    /*
+     * More Shulker quick open stuff
+     */
     @Inject(at = @At("HEAD"), method = "setScreen")
     private void setScreen(Screen screen, CallbackInfo info) {
         if (!ExampleModClient.connectedToServer()) return;
@@ -35,4 +35,13 @@ public class MinecraftClientMixin {
          */
         ClientPlayNetworkHandlerData.interrupt();
     }
+
+    /*
+     * Prevent hand from swinging when dropping item (i.e no left click while pressing Q)
+     *
+    @Redirect(at=@At(value="INVOKE", target="Lnet/minecraft/client/network/ClientPlayerEntity;swingHand(Lnet/minecraft/util/Hand;)V"), method="handleInputEvents")
+    public void swingHand(ClientPlayerEntity instance, Hand hand) {
+        if (!ExampleModClient.connectedToServer()) instance.swingHand(hand);
+    }
+     */
 }

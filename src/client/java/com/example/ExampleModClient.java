@@ -1,7 +1,6 @@
 package com.example;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ServerInfo;
 import org.apache.logging.log4j.LogManager;
@@ -35,7 +34,9 @@ public class ExampleModClient implements ClientModInitializer {
 		ServerInfo serverInfo = MinecraftClient.getInstance().getCurrentServerEntry();
 		if (serverInfo == null) return false;
 		try {
-			return addresses.contains(InetAddress.getByName(new URL("https://"+serverInfo.address).getHost()));
+			boolean b = addresses.contains(InetAddress.getByName(new URL("https://"+serverInfo.address).getHost()));
+			LOGGER.debug("Connected: {}", b);
+			return b;
 		} catch (Exception e) {
 			return false;
 		}
